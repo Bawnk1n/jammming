@@ -9,7 +9,14 @@ export const Tracklist = (props) => {
         <div className='tracklist'>
             {props.results.map((track) => {
                 return (
-                    <Track key={track.id} songName={track.trackName} artistName={track.artistName} albumName={track.albumName} />
+                    <Track key={track.id} 
+                    track={track}
+                    songName={track.trackName} 
+                    artistName={track.artistName} 
+                    albumName={track.albumName} 
+                    changeSong={props.changeSong}
+                    isAdd={props.isAdd}
+                    />
                 )
             })}
         </div>

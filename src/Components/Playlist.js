@@ -4,6 +4,11 @@ import { Tracklist } from './Tracklist';
 export const Playlist = (props) => {
 
     return(
-        <Tracklist results={props.playlistTracks}/>
+        <div>
+            <h1>{props.playlistName}</h1>
+            <Tracklist results={props.playlistTracks}
+            changeSong={props.removeSong}
+            isAdd={false}/>
+        </div>
     )
 }

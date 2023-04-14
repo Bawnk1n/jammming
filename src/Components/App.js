@@ -40,13 +40,22 @@ export const App = () => {
             albumName:'album2'
         }
     ])
+    const [playlistName, setPlaylistName] = useState('New Playlist')
+
+    const addSong = (track) => {
+        setPlaylistTracks([...playlistTracks, track])
+    }
+
+    const removeSong = (track) => {
+        setPlaylistTracks(playlistTracks.filter(origtrack => origtrack !== track))
+    }
 
     return(
         <div className = 'main'>
             <SearchBar />
             <div className='playlists'>
-                <SearchResults searchResults={searchResults}/>
-                <Playlist playlistTracks={playlistTracks}/>
+                <SearchResults searchResults={searchResults} addSong={addSong}/>
+                <Playlist playlistTracks={playlistTracks} playlistName = {playlistName} removeSong={removeSong}/>
             </div>
         </div>
     )
