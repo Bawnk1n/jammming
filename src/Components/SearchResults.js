@@ -1,6 +1,9 @@
 import React from 'react';
+import { Tracklist } from './Tracklist';
 
-export const SearchResults = () => {
+export const SearchResults = (props) => {
 
-    return
+    return(
+        <Tracklist results={props.searchResults}/>
+    )
 }

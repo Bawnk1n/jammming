@@ -1,6 +1,9 @@
 import React from 'react';
+import { Tracklist } from './Tracklist';
 
 export const Playlist = (props) => {
 
-    return
+    return(
+        <Tracklist results={props.playlistTracks}/>
+    )
 }
