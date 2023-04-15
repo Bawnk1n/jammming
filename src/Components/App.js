@@ -4,47 +4,12 @@ import { SearchBar } from './SearchBar';
 import { SearchResults } from './SearchResults';
 import { Playlist } from './Playlist';
 import './App.css'
+import Spotify from '../Spotify';
+import { SignIn } from './SignIn';
 
 export const App = () => {
-    const[playlistTracks, setPlaylistTracks] = useState([
-        {        
-            trackId:1,
-            trackName:'song1',
-            artistName:'artist1',
-            albumName:'album1',
-            uri:1
-        },
-        {        
-            trackId:2,
-            trackName:'song2',
-            artistName:'artist2',
-            albumName:'album2',
-            uri:2
-        },
-        {        
-            trackId:3,
-            trackName:'song3',
-            artistName:'artist3',
-            albumName:'album3',
-            uri:3
-        }
-    ])
-    const [searchResults, setSearchResults] = useState([
-        {
-            trackId:1,
-            trackName:'searched song1',
-            artistName:'artist1',
-            albumName:'album1',
-            uri:1
-        },
-        {
-            trackId:2,
-            trackName:'searched song2',
-            artistName:'artist2',
-            albumName:'album2',
-            uri:2
-        }
-    ])
+    const[playlistTracks, setPlaylistTracks] = useState([])
+    const [searchResults, setSearchResults] = useState([])
     const [playlistName, setPlaylistName] = useState('New Playlist')
 
     const addSong = (track) => {
@@ -68,9 +33,20 @@ export const App = () => {
         return saveToSpotify;
     }
 
+    const search = async (term) => {
+        setSearchResults([]);
+        const result = await Spotify.search(term);
+        setSearchResults(result);
+    };
+
+    const signIn = async () => {
+        await Spotify.getAccessToken();
+    }
+
     return(
         <div className = 'main'>
-            <SearchBar />
+            <SignIn SignIn={signIn}/>
+            <SearchBar onSearch={search}/>
             <div className='playlists'>
 
                 <SearchResults searchResults={searchResults} 
