@@ -1,5 +1,6 @@
 import React from 'react';
 import { Tracklist } from './Tracklist';
+import './Playlist.css';
 
 export const Playlist = (props) => {
 
@@ -13,7 +14,7 @@ export const Playlist = (props) => {
     }
 
     return(
-        <div>
+        <div className='playlist'>
             <input type='text' value={props.playlistName} onChange={handleChangeName}/>
             <Tracklist results={props.playlistTracks}
             changeSong={props.removeSong}

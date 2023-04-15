@@ -15,6 +15,7 @@ export const Tracklist = (props) => {
                     artistName={track.artistName} 
                     albumName={track.albumName} 
                     changeSong={props.changeSong}
+                    previewURL={track.previewURL}
                     isAdd={props.isAdd}
                     />
                 )

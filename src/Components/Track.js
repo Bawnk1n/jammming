@@ -13,6 +13,8 @@ return(
         <h1>{props.songName}</h1> 
         <h2>{props.artistName} {props.albumName}</h2>
         {isAdd ? <button onClick={handleChangeSong}>+</button> : <button onClick={handleChangeSong}>-</button>}
+        <audio src = {props.previewURL} controls />
+        
     </div>
 )
 }

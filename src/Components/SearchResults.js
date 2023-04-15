@@ -1,9 +1,12 @@
 import React from 'react';
 import { Tracklist } from './Tracklist';
+import './searchResults.css'
 
 export const SearchResults = (props) => {
 
     return(
-        <Tracklist results={props.searchResults} changeSong={props.addSong} isAdd={true}/>
-    )
+        <div className='searchResults'>
+            <Tracklist results={props.searchResults} changeSong={props.addSong} isAdd={true}/>
+        </div>
+    )   
 }

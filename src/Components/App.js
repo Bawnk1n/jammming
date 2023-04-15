@@ -36,6 +36,7 @@ export const App = () => {
     const search = async (term) => {
         setSearchResults([]);
         const result = await Spotify.search(term);
+        console.log('Search Results:', result)
         setSearchResults(result);
     };
 
