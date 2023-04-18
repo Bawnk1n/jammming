@@ -21,6 +21,7 @@ const Spotify = {
 
             window.setTimeout(() => user_access_token = '', expiresIn * 1000);
             window.history.pushState('Access Token', null, '/');
+            
             return user_access_token;
             
         } else {
@@ -34,7 +35,13 @@ const Spotify = {
 
     },
     search(term){
-        user_access_token = this.getAccessToken();
+        if(!user_access_token){
+            localStorage.setItem('searchTerm', term);
+        }
+        
+        if(!user_access_token){
+            user_access_token = this.getAccessToken();
+        }
 
         return fetch(`https://api.spotify.com/v1/search?type=track&q=${term}`, {
             headers:{
@@ -46,16 +53,21 @@ const Spotify = {
             if(!jsonResponse.tracks){
                 return [];
             }
-            return jsonResponse.tracks.items.map(track => ({
+            const results = jsonResponse.tracks.items.map(track => ({
                 trackId: track.id,
                 trackName: track.name,
                 artistName: track.artists[0].name,
                 albumName: track.album.name,
                 uri: track.uri,
                 previewURL: track.preview_url
-                
-            }))
-        })
+            }));
+            localStorage.removeItem('searchTerm');
+            return results;
+        });
+    },
+    getStoredSearchResults() {
+        const storedResults = localStorage.getItem('searchTerm');
+        return storedResults;
     },
     savePlaylist(playlistName, trackURIs){
         if(!playlistName || !trackURIs.length){

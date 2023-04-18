@@ -1,4 +1,5 @@
 import React from 'react';
+import './track.css'
 
 export const Track = (props) => {
 
@@ -9,12 +10,13 @@ export const Track = (props) => {
     }
 
 return(
-    <div>
+    <div className='track-div'>
         <h1>{props.songName}</h1> 
         <h2>{props.artistName} {props.albumName}</h2>
-        {isAdd ? <button onClick={handleChangeSong}>+</button> : <button onClick={handleChangeSong}>-</button>}
-        <audio src = {props.previewURL} controls />
-        
+        <div className='btn-and-audio'>
+            {isAdd ? <button onClick={handleChangeSong}>ADD</button> : <button onClick={handleChangeSong}>REMOVE</button>}
+            <audio src = {props.previewURL} controls />
+        </div>
     </div>
 )
 }

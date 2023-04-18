@@ -1,4 +1,25 @@
 .playlist {
     background-color: lightgreen;
     width: 30rem;
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content:baseline;
+    align-items: center;
+}
+
+.save-playlist-btn {
+    padding: 1rem;
+    font-size: 18px;
+    background-color: brown;
+    border-radius: 10px;
+}
+
+.playlistName {
+    margin-top:2rem;
+    margin-bottom: 0;
+    padding:1rem;
+    font-size: 32px;
+    font-weight: bold;
+    border-radius: 15px;
 }

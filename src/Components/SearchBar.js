@@ -17,8 +17,8 @@ export const SearchBar = (props) => {
     return(
         <div>
             <form onSubmit={handleSumbit}>
-                <input type='text' placeholder='Search' onChange={getSearch}/>            
-                <button type='submit'>Submit</button>
+                <input className='search-bar' type='text' placeholder='Search' onChange={getSearch}/>            
+                <button className='search-button' type='submit'>Submit</button>
             </form>
         </div>
     )

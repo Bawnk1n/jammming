@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { SearchBar } from './SearchBar';
 import { SearchResults } from './SearchResults';
 import { Playlist } from './Playlist';
@@ -36,7 +36,7 @@ export const App = () => {
     const search = async (term) => {
         setSearchResults([]);
         const result = await Spotify.search(term);
-        console.log('Search Results:', result)
+        
         setSearchResults(result);
     };
 
@@ -44,6 +44,15 @@ export const App = () => {
         await Spotify.getAccessToken();
     }
 
+    useEffect(() => {
+
+        const storedResults = Spotify.getStoredSearchResults();
+        if (storedResults) {
+            search(storedResults);
+            
+        }
+    }, []);
+    
     return(
         <div className = 'main'>
             <SignIn SignIn={signIn}/>

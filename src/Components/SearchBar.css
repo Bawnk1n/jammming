@@ -1,5 +1,12 @@
-* {
-    margin:1rem;
+.search-bar {
+    padding: 5px;
+    font-size: 30px;
+    border-radius: 5px;
+    border: antiquewhite;
+}
+
+.search-button {
+    padding: .5rem;
 }
 
 button {

@@ -1,0 +1,15 @@
+.btn-and-audio {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-and-audio button {
+    padding: 1rem;
+    background-color: rgb(221, 215, 206);
+    border-radius: 10px;
+    color:black;
+    font-weight: bolder;
+    text-shadow: 1px 1px 1px black;
+}
+

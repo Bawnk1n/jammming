@@ -15,11 +15,12 @@ export const Playlist = (props) => {
 
     return(
         <div className='playlist'>
-            <input type='text' value={props.playlistName} onChange={handleChangeName}/>
+            <input className='playlistName' type='text' value={props.playlistName} onChange={handleChangeName}/>
+            <button className='save-playlist-btn' onClick={handleSavePlaylist}>Save Playlist</button>
             <Tracklist results={props.playlistTracks}
             changeSong={props.removeSong}
             isAdd={false}/>
-            <button className='save-playlist' onClick={handleSavePlaylist}>Save Playlist</button>
+            
         </div>
     )
 }
